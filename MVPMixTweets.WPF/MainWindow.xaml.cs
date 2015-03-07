@@ -1,21 +1,27 @@
-﻿using System;
+﻿using MyStocks.Forms.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using MVPMixTweets.WindowsPhone.Resources;
-using MyStocks.Forms.ViewModels;
+using System.Windows.Shapes;
 
-namespace MVPMixTweets.WindowsPhone
+namespace MVPMixTweets.WPF
 {
-  public partial class MainPage : PhoneApplicationPage
+  /// <summary>
+  /// Interaction logic for MainWindow.xaml
+  /// </summary>
+  public partial class MainWindow : Window
   {
-    // Constructor
-    public MainPage()
+    public MainWindow()
     {
       InitializeComponent();
       viewModel = new TwitterViewModel();
@@ -28,17 +34,15 @@ namespace MVPMixTweets.WindowsPhone
       await viewModel.LoadTweetsCommand(TextBoxSearch.Text);
       Tweets.ItemsSource = viewModel.Tweets;
 
-      Progress.Visibility = System.Windows.Visibility.Collapsed;
+      Progress.Visibility = System.Windows.Visibility.Hidden;
     }
 
     private void Tweets_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-      if(Tweets.SelectedItem == null)
+      if (Tweets.SelectedItem == null)
         return;
 
-      viewModel.Speak(Tweets.SelectedIndex);
+      System.Diagnostics.Process.Start(viewModel.Tweets[Tweets.SelectedIndex].Url);
     }
-
-    
   }
 }
