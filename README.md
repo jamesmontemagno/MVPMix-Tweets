@@ -6,7 +6,7 @@ Sample Xamarin application pulling in tweets with a specific query and displayin
 
 ### Screenshots
 
-![](mvpmix.png) ![](mvpmix.png)
+![](mvpmix.png)
 
 ### Development by:
 - James Montemagno: [Twitter](http://www.twitter.com/jamesmontemagno) | [Blog](http://motzcod.es) | [GitHub](http://www.github.com/jamesmontemagno)
